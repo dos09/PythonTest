@@ -1,8 +1,6 @@
-m = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
-print([item for row in m for item in row])
+import sys
+print("sys.prefix: " + sys.prefix)
 
-def print_row_item(item, row):
-    print(row)
-    print(item)
-
-[print_row_item(item, row) for row in m for item in row]
+a = 4
+if a == 4 :
+    print("a == 4")

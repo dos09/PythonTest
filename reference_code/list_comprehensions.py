@@ -12,7 +12,7 @@ print("[x for x in lst1 if 4 > x > 1]: " + str([x for x in lst1 if 4 > x > 1]))
 # Check if a condition is true for any of the items.
 # 4 % 3 = 1, and 1 is true, so any() returns True
 print("any([i % 3 for i in [3, 3, 4, 4, 3]]): " + str(any([i % 3 for i in [3, 3, 4, 4, 3]])))
-print("sum(1 for i in [3, 3, 4, 4, 3] if i == 4): " + str(sum(1 for i in [3, 3, 4, 4, 3] if i == 4)))
+print("sum(1 for i in [3, 3, 4, 4, 3] if i == 4): " + str(sum([1 for i in [3, 3, 4, 4, 3] if i == 4])))
 
 m = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
 print([item for row in m for item in row])
