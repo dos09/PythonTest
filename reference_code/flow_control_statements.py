@@ -3,7 +3,7 @@
 rangelist = range(10)
 print("rangelist: " + str(rangelist))
 for number in rangelist: # must indent after ':'
-    if(number == 1):
+    if(number == 1): # parenthesis can be omitted
         continue
     elif(number != 5):
         print(number)
@@ -21,3 +21,8 @@ print("end of 'for number in range(1,10,2)'")
 for number in range(1,3):
     pass # null/empty operation nothing is done
 print("end of 'for number in range(1,3)'")  
+x = 10
+while x > 100:
+    print('x is', x)
+else:
+    print('while loop terminated without break')
