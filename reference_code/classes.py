@@ -45,5 +45,5 @@ print("classinstance.myfunction(5, 9): " + str(classinstance.myfunction(5, 9)))
 # we can add one to the instance anyway. Note
 # that this will only be a member of classinstance.
 classinstance.test = 300
-print("classinstance.common: " + str(classinstance.test))
-# print("classinstance2.common: " + str(classinstance2.test)) # will give error
+print("classinstance.test: " + str(classinstance.test))
+# print("classinstance2.test: " + str(classinstance2.test)) # will give error
