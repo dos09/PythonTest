@@ -1,6 +1,3 @@
-# Miscellaneous
-###############
-
 a = 4
 if(1 < a < 5):  # chained conditions
     print("1 < %s < 5" % (a))
@@ -23,8 +20,14 @@ printFibonacci(6)
 printSomething(something='using named parameters')
 x = 10
 y = 12
-x, y = y, x * 2 # x = y(12), y = x(10) * 2, assignments are not done one after the other
-#the expressions on the right-hand side are all evaluated first before any of the assignments take place. 
-#The right-hand side expressions are evaluated from the left to the right.
+x, y = y, x * 2 # x = y(12), y = x(10) * 2, assignments are not done one after 
+# the other the expressions on the right-hand side are all evaluated first 
+# before any of the assignments take place. 
+# The right-hand side expressions are evaluated from the left to the right.
 print('x = %s, y = %s' % (x, y))
 print('this','will','be','comma','separated')
+
+a, b, c = [1,2,444]
+print(a, b, c)
+a, b = 9, 0
+print(a, b)
