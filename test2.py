@@ -1,16 +1,15 @@
-# 
-# class Orc(object):
-#     def __init__(self, clan, name):
-#         self.clan = clan
-#         self.name = name
-#     def __str__(self):
-#         return 'clan: {0}, name: {1}'.format(self.clan, self.name)
-#     
-#     
-# ra = Orc('Sun orcs', 'Ra')
-# print(ra)
+from datetime import datetime
+from datetime import timedelta
 
-import time
-start_time = time.time()
-# some operations
-print("--- %s seconds ---" % (time.time() - start_time))
+year = int(input())
+
+if year != 1918:
+    if year < 1918:
+        is_leap = year % 4 == 0
+    else:
+        is_leap = (year % 400 == 0) or (year % 4 == 0 and not(year % 100 == 0)) 
+    pday = datetime.strptime('{0}-{1}-{2}'.format(year, 9, 12 if is_leap else 13),
+                             '%Y-%m-%d')
+else:
+    pday = datetime.strptime('1918-02-14', '%Y-%m-%d') + timedelta(days=256-32)
+print(pday.strftime('%d.%m.%Y'))
