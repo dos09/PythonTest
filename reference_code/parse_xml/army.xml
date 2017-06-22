@@ -1,0 +1,38 @@
+<army version="1.0">
+
+	<warrior class="orc" rank="scout">
+		<name>
+			Mogka
+		</name>
+		<kills>100</kills>
+		<offense>
+			<weapons>
+				<weapon durability="120" enchanted="yes" type="melee" name="2h war axe">
+				</weapon>
+				<weapon durability="100" type="melee" name="brutal cleaver">
+				</weapon>
+			</weapons>
+		</offense>
+		<defense>
+			<armor>
+				<heavy></heavy>
+				<medium></medium>
+			</armor>
+		</defense>
+	</warrior>
+
+	<warrior class="troll" rank="veteran">
+		<name>
+			Valar
+		</name>
+		<offense>
+			<weapons>
+				<weapon durability="100" enchanted="no" type="ranged" name="faded to black">
+				</weapon>
+				<weapon durability="100" type="melee" name="doomed daggers">
+				</weapon>
+			</weapons>
+		</offense>
+	</warrior>
+
+</army>
