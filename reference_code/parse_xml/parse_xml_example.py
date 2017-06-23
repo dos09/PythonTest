@@ -30,7 +30,7 @@ def make_xml_structure():
         print(name, value)
     child2.text = 'Gosho'
     print('>> child2:', etree.tostring(child2))
-    print('child2.getparent():', child2.getparent().tag)
+    print('>> child2.getparent().tag:', child2.getparent().tag)
     return root
 
 def get_test_xml_structure():
@@ -59,14 +59,14 @@ def xml_from_string():
     print(etree.tostring(root))
     
 def xml_from_file(filename):
-    tree = etree.parse('army.xml')
+    tree = etree.parse(filename)
     root = tree.getroot()
     print(etree.tostring(root))
     
 
 print('>>> make_xml_structure() <<<###################')
 root = make_xml_structure()
-print(etree.tostring(root))
+print('>> etree.tostring(root)', etree.tostring(root))
 print('>>> get_test_xml_structure <<<#################')
 root = get_test_xml_structure()
 print('>>> traverse_tree <<<##########################')

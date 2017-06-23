@@ -1,0 +1,20 @@
+<army version="1.0">
+	<!--some comment -->
+	<warrior class="orc" rank="none">
+		<name>Afff</name>
+	</warrior>
+	<warrior class="goblin" rank="none">
+	</warrior>
+	<warrior class="orc" rank="scout">
+		<name>Mogka</name>
+	</warrior>
+	<warrior class="troll" rank="veteran" guardian="yes">
+		<name>Valar</name>
+		<offense>
+			<weapons>
+				<weapon>bow</weapon>
+				<weapon>daggers</weapon>
+			</weapons>
+		</offense>
+	</warrior>
+</army>

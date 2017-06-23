@@ -16,4 +16,8 @@
 # print(type(str)) # <class 'str'>
 # print(str) # 1,234,567
 
-print('failed ips ({:,}):'.format(4444, 1234))
+# print('failed ips ({:,}):'.format(4444, 1234))
+
+d = {}
+d.setdefault('a',1)
+print(d['a'])

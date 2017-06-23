@@ -1,0 +1,26 @@
+>>> from lxml import etree
+>>> q = etree.fromstring('<xml><hello>a</hello><x><hello>b</hello></x></xml>')
+>>> q.findall('hello')     # Tag name, first level only.
+[<Element hello at 414a7c8>]
+>>> q.findall('.//hello')  # XPath, recursive.
+[<Element hello at 414a7c8>, <Element hello at 414a818>]
+
+
+
+>>> root = etree.XML("<root><a x='123'>aText<b/><c/><b/></a></root>")
+#Find a child of an Element:
+>>> print(root.find("b"))
+None
+>>> print(root.find("a").tag)
+a
+#Find an Element anywhere in the tree:
+>>> print(root.find(".//b").tag)
+b
+>>> [ b.tag for b in root.iterfind(".//b") ]
+['b', 'b']
+#Find Elements with a certain attribute:
+>>> print(root.findall(".//a[@x]")[0].tag)
+a
+>>> print(root.findall(".//a[@y]"))
+[]
+
