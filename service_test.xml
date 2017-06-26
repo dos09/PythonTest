@@ -1,0 +1,16 @@
+<root>
+	<Paragraph>
+		<Paragraph>
+			The subject common name found in the X.509 certificate does
+			not seem to match the scan target:
+			<UnorderedList>
+				<ListItem>Subject CN SerComm does not match target name
+					specified in the site.
+				</ListItem>
+				<ListItem>Subject CN SerComm could not be resolved to an IP
+					address via DNS lookup
+				</ListItem>
+			</UnorderedList>
+		</Paragraph>
+	</Paragraph>
+</root>
