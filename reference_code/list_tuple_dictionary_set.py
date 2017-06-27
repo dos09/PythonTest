@@ -19,6 +19,8 @@ print("mylist[:2]: " + str(mylist[:2]))
 print("mylist[::2]: " + str(mylist[::2]))  # specify step
 myset = {1, 2, 3, 3, 3, 4, 4, 1, 2}
 print(myset)
+print('dictionary traversing:')
+dict = { 'a' : 'letter a', 'b' : 'letter b'}
 
 class Orc:
     pass
