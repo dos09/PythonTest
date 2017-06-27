@@ -18,3 +18,5 @@ print('the first letter is \'%s\'' % (str[0]))
 print('the last letter is \'%s\'' % (str[-1]))
 print('str len = %s' % (len(str)))
 print('get a substring: \'%s\'' % (str[0:4])) # str[inclusiveStartIndex : exclusiveEndIndex]
+s = "%s - %s" % ('tralala',200)  
+print(s)

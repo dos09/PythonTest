@@ -47,3 +47,11 @@ print("classinstance.myfunction(5, 9): " + str(classinstance.myfunction(5, 9)))
 classinstance.test = 300
 print("classinstance.test: " + str(classinstance.test))
 # print("classinstance2.test: " + str(classinstance2.test)) # will give error
+
+
+class Orc:
+    def __call__(self):
+        print('the orc instance was called')
+        
+orc = Orc()
+orc()

@@ -1,3 +1,4 @@
+from collections import defaultdict
 # List, Tuple, Dictionary, Set
 ##############################
 mylist = [31, "value", 3.44]
@@ -18,3 +19,14 @@ print("mylist[:2]: " + str(mylist[:2]))
 print("mylist[::2]: " + str(mylist[::2]))  # specify step
 myset = {1, 2, 3, 3, 3, 4, 4, 1, 2}
 print(myset)
+
+class Orc:
+    pass
+
+d = {}
+d.setdefault('a',1)
+print(d['a'])
+# print(d['b']) # KeyError
+d = defaultdict(Orc) # default value must be callable
+print(d['x'])
+print(d['y'])
