@@ -2,9 +2,9 @@ import logging
 from datetime import datetime
 from time import asctime
 
-str = 'asd: dasd: gg:'
-a = str.split(':', 1)
-print(type(a[0]))
+# str = 'asd: dasd: gg:'
+# a = str.split(':', 1)
+# print(type(a[0]))
 
 # str = '20170605T180907003'
 # sd = str[0:8]
@@ -67,3 +67,17 @@ print(type(a[0]))
 # arr = ['a', 'b', 'c']
 # 
 # print('-'.join([i for i in arr]))
+
+import re
+
+    
+def a(text):
+    if text is None:
+        text = ''
+        
+    text = re.sub(re.compile('\s{2,}'), ' ', text.strip())
+    
+    return text
+    
+print("'%s'" % a('     f     ff     '))
+print("'%s'" % a(None))
