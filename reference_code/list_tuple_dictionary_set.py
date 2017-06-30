@@ -32,3 +32,9 @@ print(d['a'])
 d = defaultdict(Orc) # default value must be callable
 print(d['x'])
 print(d['y'])
+
+d1 = { 'a' : 4, 'b': 4 }
+d2 = { 'a' : 1, 'c': 5}
+d1.update(d2)
+print(d1)
+print(d2)
