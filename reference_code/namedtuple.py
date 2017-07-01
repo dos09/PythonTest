@@ -2,10 +2,10 @@ from collections import namedtuple
 
 Orc = namedtuple('Orc', 'name age kills'.split())
 
-def _new_orc_1(**args):    
-    return Orc(args.get('name'), 
-               args.get('age', None),
-               args.get('kills'))
+def _new_orc_1(**kvargs):    
+    return Orc(kvargs.get('name'), 
+               kvargs.get('age', None),
+               kvargs.get('kills'))
 
 def _new_orc_2(name, kills, age=None):
     return Orc(name, age, kills)

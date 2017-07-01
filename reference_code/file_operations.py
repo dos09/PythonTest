@@ -98,12 +98,3 @@ def test_move_files():
 
 # test_move_files()
 
-class Orc:
-    def __init__(self):
-        self.b = '20202'
-
-o = Orc()
-
-print(getattr(o, 'a', 'OK'))
-print(getattr(o, 'b', 'OK'))
-print('%s' % None)

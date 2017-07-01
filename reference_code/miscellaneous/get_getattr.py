@@ -1,4 +1,4 @@
-# test dict.get() and getattr()
+# dict.get() and getattr()
 
 class A:
     def __init__(self):

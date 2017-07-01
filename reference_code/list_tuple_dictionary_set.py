@@ -12,8 +12,10 @@ print("mytuple[0]: " + str(mytuple[0]))
 print("mydictionary[\"a\"]: " + mydictionary["a"])
 mylist.append("asda")
 print("mylist: " + str(mylist))
-print("mylist[:]: " + str(mylist[:]))  # from first to last. When omit start index = first, when omit end index = last
-print("mylist[0:len(mylist)]: " + str(mylist[0:len(mylist)]))  # end index is exclusive
+# from first to last. When omit start index = first, when omit end index = last
+print("mylist[:]: " + str(mylist[:]))
+# end index is exclusive
+print("mylist[0:len(mylist)]: " + str(mylist[0:len(mylist)]))
 print("mylist[-3:-1]: " + str(mylist[-3:-1]))
 print("mylist[:2]: " + str(mylist[:2]))
 print("mylist[::2]: " + str(mylist[::2]))  # specify step

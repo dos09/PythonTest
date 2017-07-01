@@ -27,7 +27,7 @@ obj = gen()
 print(obj.__next__())
 print(obj.__next__())
 print(obj.__next__())
-print('use generator with "for x in getn()"', '---------------------------')
+print('use generator with "for x in gen()"', '---------------------------')
 for x in gen():
     print(x)
 print('use generator with "__next__"', '---------------------------')

@@ -5,9 +5,9 @@ class Warrior:
         self.hp = hp
     
     @classmethod
-    def from_string(cls, warrior_str):
+    def from_string(_class, warrior_str):
         name, hp = warrior_str.split('-')
-        return cls(name, hp)
+        return _class(name, hp)
     
     def __str__(self):
         return "{0} {1}".format(self.name, self.hp)

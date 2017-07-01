@@ -56,6 +56,14 @@ class Node:
         print(offset, self.tagname, list(self.attrib.keys()))
         for child in self.children:
             child.print_structure(num + 4)
+    
+    def attributes_per_tag(self, dict):
+        attr_set = dict.get(self.tagname, set())    
+        for attr_name in self.attrib.keys():
+            attr_set.add(attr_name)
+        dict[self.tagname] = attr_set
+        for child in self.children:
+            child.attributes_per_tag(dict)
             
 root = xml_from_file('army_small.xml')
 # test_traverse01(root)
@@ -65,3 +73,7 @@ root_node = collect_data(root)
 root_node.print_all()
 # root_node.print_structure()
 
+dict = {}
+root_node.attributes_per_tag(dict)
+for key in sorted(dict):
+    print(key, sorted(dict[key]))

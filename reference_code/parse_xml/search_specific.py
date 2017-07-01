@@ -58,7 +58,7 @@ def collect_data(root):
         war.attr_guardian = elem_war.attrib.get('guardian', None)
         war_name = Name()
         tag_name = elem_war.find('name')
-        if tag_name != None:
+        if tag_name is not None:
             war_name.text = tag_name.text
         war.tag_name = war_name
         elem_weapons = elem_war.find('.//weapons')
