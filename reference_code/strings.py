@@ -25,3 +25,18 @@ print('{:,}'.format(12412412))
 print('{0:,}'.format(12412412))
 s = "%s - %s" % ('tralala',200)  
 print(s)
+
+print("'%s'" % '12'.rjust(5))
+print("'%s'" % '13'.ljust(5))
+print("'%s'" % '14'.center(5))
+print("'{0:5d}'".format(20))
+
+print('This {orc} is bad'.format(orc='Mogka'))
+print("int: '{0:5d}', float: '{1:.2f}'".format(4, 4.456))
+# note the absence of 'f'
+print("int: '{0:5}', float: '{1:.2}'".format(4, 4.456))
+print("'%2.2f'" % 4.456)
+
+orcs = {'mogka':1000, 'ra':1200}
+print("orc's hps : {0[mogka]:d}, {0[ra]}".format(orcs))
+print("orc's hps : {mogka:d}, {ra}".format(**orcs))
