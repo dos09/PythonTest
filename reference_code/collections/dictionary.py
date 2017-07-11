@@ -46,3 +46,9 @@ print({'one':'A', 'two':'B' })
 # set comprehension
 td = {x: x**2 for x in range(5)}
 print(td)
+
+d = {}
+d[('a', 1)] = 'a-one'
+d[('b', 2)] = 'b-two'
+for (c, n), v in d.items():
+    print(c, n, v)
