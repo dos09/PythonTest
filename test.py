@@ -20,3 +20,6 @@ class A:
     
 a = A()
 print(a.edno)
+
+str = "I am {0:s} banana".format("yellow")
+print(str)

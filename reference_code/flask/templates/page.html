@@ -1,0 +1,55 @@
+<html>
+	<head>
+		<style>
+			input[type='button'] {
+				margin: 5px;
+			}
+		</style>
+	</head>
+    <body>
+        <h3>Make POST to flask</h3>
+        <input type="button" id="btnGET" value="Make GET request" />
+        <br/>
+        <input type="button" id="btnPOST" value="Make POST request" />
+        <br/>
+        <input type="button" id="btnSend" value="Send data using post" />
+        <p id="res"></p>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script>
+            $("#btnGET").click(function(){
+            	console.log("clicked: Make GET request");
+                $.ajax({
+                	url: 'http://localhost:5000/test/detect_request_type',
+                	method: "GET",
+                	success: function(response) {
+                		console.log(response);
+                	}
+                });
+            });
+            $("#btnPOST").click(function(){
+            	console.log("clicked: Make POST request");
+                $.ajax({
+                	url: 'http://localhost:5000/test/detect_request_type',
+                	method: "POST",
+                	success: function(response) {
+                		console.log(response);
+                	}
+                });
+            });
+            $("#btnSend").click(function(){
+            	console.log("clicked: Send data using post");
+                $.ajax({
+                	url: 'http://localhost:5000/test/post',
+                	method: "POST",
+                	data: {
+                		one : "oneeeee",
+                		two : "two two"
+                	},
+                	success: function(response) {
+                		console.log(response);
+                	}
+                });
+            });
+        </script>
+    </body>
+</html>
