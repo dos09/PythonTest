@@ -1,6 +1,6 @@
 from banana import Banana
 from flask import Flask, request, render_template
-app = Flask(__name__)
+app = Flask(__name__, template_folder="pages")
 
 @app.route('/')
 def hello():
@@ -25,14 +25,13 @@ def process_post_request():
     for k, v in request.form.items():
         print('[{0}, {1}]'.format(k, v))
         
-    return str(len(request.form))
+    return 'Server received {0} items'.format(len(request.form))
 
 
 @app.route('/page')
 def show_page():
     return render_template('page.html')
 # default folder for pages is 'templates' in the root of my application
-# can specify another like:
 
 if __name__ == '__main__':
     app.run(debug=True)
