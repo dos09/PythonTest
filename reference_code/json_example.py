@@ -15,7 +15,7 @@ class Orc:
     def __str__(self):
         return "{}, {}, {}".format(self.name, self.kills, self.weapons)
 
-def json_builin_types():
+def json_builtin_types():
     print('### json with built-in types ###')
     
     a = ['adasd', 'asfasfas']
@@ -61,6 +61,6 @@ def json_file_read_write():
             print(orc)
     
 
-# json_builin_types()
-# json_custom_types()
-json_file_read_write()
+json_builtin_types()
+#json_custom_types()
+#json_file_read_write()

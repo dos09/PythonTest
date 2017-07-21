@@ -16,7 +16,7 @@ print(getattr(obj, 'b', 'donkey'))
 print('dict example:','------------------------------------')
 dict = { 'a':4, 5:999 }
 print('dict:', dict)
-print("dict['a']:",dict['a'])
+print("dict['a']:", dict['a'])
 
 try:
     print(dict['b']) # KeyError

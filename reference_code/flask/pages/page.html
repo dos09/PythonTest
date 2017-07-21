@@ -12,31 +12,29 @@
         <br/>
         <input type="button" id="btnPOST" value="Make POST request" />
         <br/>
-        <input type="button" id="btnSend" value="Send data using post" />
-        <p>Check web console for response (Ctrl + K)</p>
+        <input type="button" id="btnSendData" value="Send data using post" />
+        <br/>
+        <input type="button" id="btnJSONResult" value="Get json result"/>
+        <p>Check web console for response (Ctrl + Shift + K)</p>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script>
-            $("#btnGET").click(function(){
-            	console.log("clicked: Make GET request");
+        	function makeAjaxRequest(type) {
+        		console.log("clicked: Make " + type + " request");
                 $.ajax({
                 	url: 'http://localhost:5000/test/detect_request_type',
-                	method: "GET",
+                	method: type,
                 	success: function(response) {
                 		console.log(response);
                 	}
                 });
+        	}
+            $("#btnGET").click(function(){
+            	makeAjaxRequest("GET");
             });
             $("#btnPOST").click(function(){
-            	console.log("clicked: Make POST request");
-                $.ajax({
-                	url: 'http://localhost:5000/test/detect_request_type',
-                	method: "POST",
-                	success: function(response) {
-                		console.log(response);
-                	}
-                });
+            	makeAjaxRequest("POST");
             });
-            $("#btnSend").click(function(){
+            $("#btnSendData").click(function(){
             	console.log("clicked: Send data using post");
                 $.ajax({
                 	url: 'http://localhost:5000/test/post',
@@ -50,6 +48,17 @@
                 	}
                 });
             });
+            $("#btnJSONResult").click(function() {
+            	console.log('clicked: Get JSON result');
+            	$.ajax({
+           			url: 'http://localhost:5000/test/json',
+           			method: 'GET',
+           			dataType: 'json',
+           			success: function(response) {
+           				console.log(response);
+           			}
+            	});
+            })
         </script>
     </body>
 </html>

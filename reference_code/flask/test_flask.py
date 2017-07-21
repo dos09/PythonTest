@@ -1,5 +1,7 @@
 from banana import Banana
 from flask import Flask, request, render_template
+import json
+
 app = Flask(__name__, template_folder="pages")
 
 @app.route('/')
@@ -13,10 +15,10 @@ def banana():
 @app.route('/test/detect_request_type', methods = ['GET', 'POST'])
 def detect_request_type():
     if request.method == 'GET':
-        return 'Request method is GET'
+        return '[Server]: Request method is GET'
     
     if request.method == 'POST':
-        return 'Request method is POST'
+        return '[Server]: Request method is POST'
     
 @app.route('/test/post', methods = ['POST'])
 def process_post_request():
@@ -25,8 +27,17 @@ def process_post_request():
     for k, v in request.form.items():
         print('[{0}, {1}]'.format(k, v))
         
-    return 'Server received {0} items'.format(len(request.form))
+    return '[Server]: received {0} items'.format(len(request.form))
 
+@app.route('/test/json')
+def return_json():
+    d = {
+        'key A': 'value A',
+        'key B': 'value B'
+    }
+    res = json.dumps(d)
+    print(res)
+    return res
 
 @app.route('/page')
 def show_page():
@@ -35,3 +46,13 @@ def show_page():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
+# 1. How to use:    
+# - change environment to one that has flask installed
+# - python test_flask.py
+# - in browser: http://localhost:5000/page
+# 2. On errors:
+# can check in terminal to see the status code of a given request
+# example:
+# "POST /test/json HTTP/1.1" 405 -
+# search for 'http status code 405'
