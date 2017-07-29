@@ -40,3 +40,11 @@ print("'%2.2f'" % 4.456)
 orcs = {'mogka':1000, 'ra':1200}
 print("orc's hps : {0[mogka]:d}, {0[ra]}".format(orcs))
 print("orc's hps : {mogka:d}, {ra}".format(**orcs))
+
+from sys import stdout
+
+print('file=stdout is the default', file=stdout)
+filename = 'temp_trash.log'
+with open(filename, 'w') as f: 
+    print(1,2,'aaa', file=f)
+print('data was written to' ,filename)
