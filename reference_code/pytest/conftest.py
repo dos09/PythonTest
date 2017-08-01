@@ -3,7 +3,6 @@ import pytest
 def pytest_addoption(parser):
     parser.addoption("--str_one", default='default value 1')
     parser.addoption("--str_two", default='default value 2')
-    parser.addoption()
 
 
 @pytest.fixture(scope='session')
