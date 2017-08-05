@@ -1,0 +1,6 @@
+1. activate virtual env with click installed
+2. navigate to the dir with the setup.py
+3. pip install . or pip install -e .
+    -e is for editable, if there is a change in the modules/packages
+    described in the setup.py, the change will be visible immediately, otherwise
+    pip install . --upgrade must be invoked to reinstall with the new changes
