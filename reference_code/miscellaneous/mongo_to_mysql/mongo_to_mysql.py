@@ -1,5 +1,6 @@
 from subprocess import call
-
+# the port can be part of the host option:
+# --host=127.0.0.1:27017
 mongo_export = ('mongoexport -v -d mytest --host=localhost --port=27017 '
                 '-c orcs --type=csv  --fieldFile=./orcs.cols > orcs.csv')
 code = call(mongo_export, shell=True)
