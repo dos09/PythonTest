@@ -48,3 +48,6 @@ filename = 'temp_trash.log'
 with open(filename, 'w') as f: 
     print(1,2,'aaa', file=f)
 print('data was written to' ,filename)
+
+print('"{:>5d}"'.format(123))
+print('"{:<5d}"'.format(123)
