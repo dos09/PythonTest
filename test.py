@@ -1,25 +1,24 @@
-class A:
-    def __init__(self):
-        self.attr = {'edno':111, 'dve':222, 'tri':333}
-    
-    @property
-    def edno(self):
-        return self.attr.get('edno')
-    
-    @property
-    def x(self):
-        return self._x
-    
-    @x.setter
-    def x(self, x):
-        if x < 0:
-            x = 0
-        elif x > 1000:
-            x = 1000
-        self._x = x
-    
-a = A()
-print(a.edno)
+# import getpass
+# print(getpass.getuser())
 
-str = "I am {0:s} banana".format("yellow")
-print(str)
+from pathlib import Path
+import os
+
+def assure_user_dir(dir_name):
+    """Creates directory in the user's home directory"""
+    home = str(Path.home())
+    dir = os.path.join(home, dir_name)
+    if not os.path.exists(dir):
+        os.makedirs(dir)
+    
+    return dir
+    
+# dir = assure_user_dir('asd')
+# print(dir)
+
+d = {'key':'value'}
+s = "edno {key}".format(key='vallllue')
+print(s)
+
+print('@xyz')
+    
