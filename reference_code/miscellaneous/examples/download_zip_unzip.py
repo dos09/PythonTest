@@ -46,7 +46,8 @@ def download_file(url, destination_dir, overwrite_existing=False):
 
     print('Downloading {0} {1}'.format(
         file_name, fmt_file_size))
-
+    step_milestone = 7
+    next_milestone = step_milestone
     try:
         while True:
             data = response.read(block_size)
@@ -56,8 +57,10 @@ def download_file(url, destination_dir, overwrite_existing=False):
             out_file.write(data)
             downloaded += len(data)
             percent = downloaded * 100. / file_size
-            print('Downloaded {0} from {1} [{2:6.2f} %]'.format(
-                format_file_size(downloaded), fmt_file_size, percent))
+            if percent >= next_milestone:
+                print('Downloaded {0} from {1} [{2:6.2f} %]'.format(
+                    format_file_size(downloaded), fmt_file_size, percent))
+                next_milestone += step_milestone
     finally:
         response.close()
         out_file.close()
@@ -83,7 +86,6 @@ def format_file_size(size):
         res = '{0:.2f} GB'.format(size)
 
     return res
-
 
 def extract_zip(file_name, destination_dir):
     with zipfile.ZipFile(file_name, 'r') as zip_ref:
