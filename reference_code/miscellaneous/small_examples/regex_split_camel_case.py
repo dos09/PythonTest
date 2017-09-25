@@ -1,5 +1,6 @@
 import re
-    
+
+
 def check(s):
     pattern = re.compile(r'([a-z][^A-Z]+)|([A-Z][^A-Z]+)|(.+?)')
     for m in pattern.finditer(s):
