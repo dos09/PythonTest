@@ -1,18 +1,26 @@
-from smtplib import SMTP
+
+USE_SSL = True #otherwise it is TLS
+
+if USE_SSL:
+    from smtplib import SMTP_SSL as SMTP
+    print('Imported SMTP_SSL')
+else:
+    from smtplib import SMTP
+    print('Imported SMTP')
 from email.mime.text import MIMEText
 
-SMTP_SERVER = 'smtp.mail.com'
-SMTP_SERVER_PORT = 587
-E_FROM = 'XXX@mail.com'
-E_TO = 'XXX@mail.com'
+SMTP_SERVER = 'smtp.gmx.com'#'smtp.mail.com'
+SMTP_SERVER_PORT = 465 # for mail.com 587, for gmx.com 465
+E_FROM = 'FromXX <X@gmx.com>'
+E_TO = 'ToXX <X@gmx.com>'
 E_SUBJECT = 'test email (subject)'
 E_CONTENT_TEXT = '''This is test email.
     This must be on the second line.'''
 E_CONTENT_HTML = """<b style='color:red'>Bold red text</b>"""
 MSG_TYPE = 'html' # plain
 
-USER_NAME = 'XXX@mail.com'
-USER_PASSWORD = 'XXX'
+USER_NAME = 'X@gmx.com'
+USER_PASSWORD = 'X'
 
 def send_email():
     msg = MIMEText(E_CONTENT_HTML, MSG_TYPE)
@@ -22,19 +30,23 @@ def send_email():
     try:
         conn = SMTP(host=SMTP_SERVER, port=SMTP_SERVER_PORT)
         #enable ESTMP (extra commands can be used, e.g. starttls)
-        status_code = conn.ehlo()[0]
-        if status_code != 250:
-            print('ehlo response code: %s, exiting' % status_code)
-            return
-        status_code = conn.starttls()[0]
-        if status_code != 220:
-            print('starttls response code: %s, exiting' % status_code)
-            return
-        # ehlo called again as advice from smtplib documentation
-        status_code = conn.ehlo()[0]
-        if status_code != 250:
-            print('ehlo response code: %s, exiting' % status_code)
-            return
+
+        if not USE_SSL:
+            status_code = conn.ehlo()[0]
+            if status_code != 250:
+                print('ehlo response code: %s, exiting' % status_code)
+                return
+        
+            status_code = conn.starttls()[0]
+            if status_code != 220:
+                print('starttls response code: %s, exiting' % status_code)
+                return
+
+            # ehlo called again as advice from smtplib documentation
+            status_code = conn.ehlo()[0]
+            if status_code != 250:
+                print('ehlo response code: %s, exiting' % status_code)
+                return
         conn.login(USER_NAME, USER_PASSWORD)
         try:
             conn.sendmail(E_FROM, E_TO, msg.as_string())
