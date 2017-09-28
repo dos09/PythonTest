@@ -1,0 +1,48 @@
+<html>
+	<head>
+		<style>
+			input[type='button'] {
+				margin: 5px;
+			}
+		</style>
+	</head>
+    <body>
+        <input type="button" id="btnHeader" value="Post+Header data" />
+        <br/>
+        <input type="button" id="btnBody" value="Post+json data" />
+        <br/>
+        <p>Check web console for response (Ctrl + Shift + K)</p>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script>
+            $("#btnHeader").click(function(){
+                $.ajax({
+                	url: "http://localhost:5000/readheaders",
+                	method: "POST",
+                    contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+                    data: "asd=123456",
+                    headers: {
+                        "asd": "portokal"
+                    },
+                	success: function(response) {
+                		console.log(response);
+                	}
+                });
+            });
+            
+            $("#btnBody").click(function(){
+                $.ajax({
+                	url: 'http://localhost:5000/readjson',
+                	method: "POST",
+                	data: {
+                		one : "oneeeee",
+                		two : "two two"
+                	},
+                	success: function(response) {
+                		console.log(response);
+                	}
+                });
+            });
+            
+        </script>
+    </body>
+</html>
