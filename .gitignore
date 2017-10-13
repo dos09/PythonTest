@@ -3,3 +3,4 @@
 .settings/
 .metadata
 __pycache__
+test/

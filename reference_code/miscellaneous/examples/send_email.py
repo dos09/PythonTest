@@ -23,10 +23,27 @@ USER_NAME = 'X@gmx.com'
 USER_PASSWORD = 'X'
 
 def send_email():
-    msg = MIMEText(E_CONTENT_HTML, MSG_TYPE)
+    # the email headers msg['XXX] must be strings
+    # if list join with comma
+    msg = MIMEMultipart('alternative')
     msg['Subject'] = E_SUBJECT
     msg['From'] = E_FROM
     msg['To'] = E_TO
+    cc = ['F@gmx.com']
+    msg['CC'] = ','.join(cc)
+    recipients = [E_TO] + cc
+    part1 = MIMEText(E_CONTENT_TEXT, 'plain')
+    # smtp servers chop lines longer than 990 symbols and insert new line
+    # which can corrupt html, can use fix_html from reusable_code directory
+    part2 = MIMEText(E_CONTENT_HTML, 'html')
+    msg.attach(part1)
+    msg.attach(part2)
+    
+    # if we send only one type of data
+#     msg = MIMEText(E_CONTENT_HTML, MSG_TYPE)
+#     msg['Subject'] = E_SUBJECT
+#     msg['From'] = E_FROM
+#     msg['To'] = E_TO
     try:
         conn = SMTP(host=SMTP_SERVER, port=SMTP_SERVER_PORT)
         #enable ESTMP (extra commands can be used, e.g. starttls)
@@ -49,7 +66,7 @@ def send_email():
                 return
         conn.login(USER_NAME, USER_PASSWORD)
         try:
-            conn.sendmail(E_FROM, E_TO, msg.as_string())
+            conn.sendmail(E_FROM, recipients, msg.as_string())
             print('Message sent successfully')
         finally:
             conn.quit()
@@ -60,3 +77,4 @@ def send_email():
 if __name__ == "__main__":
     send_email()
 
+# when sending html must have '\r\n' to split long lines (900+ symbols))
