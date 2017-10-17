@@ -11,7 +11,7 @@ print(re.search('def(?!abc)', 'defxxx'))
 # positive lookbehind
 # matched def if preceded by abc without consuming the abc
 print(re.search('(?<=abc)def', 'abcdef'))
-# negatiev lookbehind
+# negative lookbehind
 # matches def if not preceded by abc without consuming the xxx
 print(re.search('(?<!abc)def', 'abcdef'))
 print(re.search('(?<!abc)def', 'xxxdef'))

@@ -42,12 +42,10 @@ text = "He was carefully disguised but captured quickly by police."
 print(re.findall(r"\w+ly", text))
 print('finditer')
 for m in re.finditer(r"\w+ly", text):
-    print('%d-%d: %s' % (m.start(), m.end(), m.group(0)), m.span())
+    print('%d-%d: %s, %s' % (m.start(), m.end(), m.group(0), m.span()))
 
 print('re.sub - replace matches')
 # Squaring numbers
-
-
 def square(match):
     number = int(match.group(0))
     return str(number**2)
