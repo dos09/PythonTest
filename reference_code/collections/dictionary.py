@@ -54,3 +54,7 @@ d[('a', 1)] = 'a-one'
 d[('b', 2)] = 'b-two'
 for (c, n), v in d.items():
     print(c, n, v)
+    
+d = {'a':1, 'b':2}
+r = {k: v*10 for k, v in d.items()}
+print(type(r), r)
