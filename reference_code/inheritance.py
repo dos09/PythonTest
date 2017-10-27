@@ -1,5 +1,6 @@
 class Common:
     VAR_COMMON = 'VAR_COMMON'
+    NUMS = [1,2,3]
     
     def __init__(self, c):
         print(' * init Common')
@@ -7,10 +8,13 @@ class Common:
         
     def run(self):
         print(' * run Common')
-        print(Common.VAR_COMMON, self.c)
+        print('Common vars:',
+              Common.VAR_COMMON, Common.NUMS)
+        print('self vars:', self.c, self.VAR_COMMON, self.NUMS)
 
 class Asset(Common):
     VAR_ASSET = 'VAR_ASSET'
+    NUMS = Common.NUMS + [3, 4, 5]
     
     def __init__(self, a, c):
         print(' * init Asset')
@@ -21,8 +25,10 @@ class Asset(Common):
         print(' * run Asset')
         super(Asset, self).run()
         print(Asset.VAR_ASSET, self.a)
-        print('BonusC:', self.c, Asset.VAR_COMMON, Common.VAR_COMMON, self.VAR_COMMON)
+        print('BonusC:', 
+              self.c, Asset.VAR_COMMON, Common.VAR_COMMON, self.VAR_COMMON)
         print('BonusA:', Asset.VAR_ASSET, self.VAR_ASSET)
+        print('NUMS:', Common.NUMS, Asset.NUMS, self.NUMS)
         
 oc = Common('c')
 oc.run()
