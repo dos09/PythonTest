@@ -1,0 +1,35 @@
+Given the tests file structure is:
+
+tests/
+    __init__.py
+
+    conftest.py
+        # content of tests/conftest.py
+        @pytest.fixture
+        def username():
+            return 'username'
+
+    test_something.py
+        # content of tests/test_something.py
+        import pytest
+
+        @pytest.fixture
+        def username(username):
+            return 'overridden-' + username
+
+        def test_username(username):
+            assert username == 'overridden-username'
+
+    test_something_else.py
+        # content of tests/test_something_else.py
+        import pytest
+
+        @pytest.fixture
+        def username(username):
+            return 'overridden-else-' + username
+
+        def test_username(username):
+            assert username == 'overridden-else-username'
+
+In the example above, a fixture with the same name can be 
+overridden for certain test module.

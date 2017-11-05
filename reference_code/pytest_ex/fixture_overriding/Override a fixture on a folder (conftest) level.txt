@@ -1,0 +1,38 @@
+Given the tests file structure is:
+
+tests/
+    __init__.py
+
+    conftest.py
+        # content of tests/conftest.py
+        import pytest
+
+        @pytest.fixture
+        def username():
+            return 'username'
+
+    test_something.py
+        # content of tests/test_something.py
+        def test_username(username):
+            assert username == 'username'
+
+    subfolder/
+        __init__.py
+
+        conftest.py
+            # content of tests/subfolder/conftest.py
+            import pytest
+
+            @pytest.fixture
+            def username(username):
+                return 'overridden-' + username
+
+        test_something.py
+            # content of tests/subfolder/test_something.py
+            def test_username(username):
+                assert username == 'overridden-username'
+
+As you can see, a fixture with the same name can be overridden 
+for certain test folder level. Note that the base or super 
+fixture can be accessed from the overriding fixture easily - 
+used in the example above.

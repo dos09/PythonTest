@@ -4,3 +4,4 @@
 .metadata
 __pycache__
 test/
+.cache
