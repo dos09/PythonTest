@@ -2,5 +2,6 @@
 .pydevproject
 .settings/
 .metadata
+.cache
 __pycache__
 test/
