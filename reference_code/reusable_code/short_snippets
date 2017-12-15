@@ -1,0 +1,2 @@
+## datetime json serialization
+json.dumps(doc, default=str)
