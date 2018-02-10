@@ -45,7 +45,7 @@ print('ways to create dictionary:')
 td = dict(one='A', two='B')
 print('td', td)
 print({'one': 'A', 'two': 'B'})
-# set comprehension
+# dictionary comprehension
 td = {x: x**2 for x in range(5)}
 print(td)
 
