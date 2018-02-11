@@ -1,3 +1,5 @@
+from collections import Counter
+
 def equal_arrays(arr1, arr2, none_equals_empty_arr=True):
     """ Check if two lists have the same elements """
 
@@ -66,5 +68,5 @@ doc = {
     }
 }
 
-set_val(doc, 'horde.orcs.name', 'Mogka')
+set_dict_val(doc, 'horde.orcs.name', 'Mogka')
 print(doc)

@@ -30,7 +30,7 @@ def get_borders(all_docs_count, procs_count):
     step = all_docs_count // procs_count
     low = 0
     borders = []  # low - inclusive, high - exclusive
-    for i in range(procs_count - 1):
+    for _ in range(procs_count - 1):
         high = low + step
         borders.append((low, high))
         low = high
