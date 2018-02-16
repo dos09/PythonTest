@@ -37,7 +37,7 @@ def retry_run(_callable, *args, **kwargs):
 
 
 def batch_fetch_using_sort(db, collection_name,
-                           _find_query, _fetch_fields, sort_by_field='_id',
+                           find_query, fetch_fields, sort_by_field='_id',
                            batch_limit=10000, matching_docs_count=None):
     """ Fetch data in batches.
      
@@ -61,8 +61,8 @@ def batch_fetch_using_sort(db, collection_name,
                     .sort(sort_by).limit(limit_size))
 
     collection = db[collection_name]
-    find_query = dict(_find_query)
-    fetch_fields = dict(_fetch_fields)
+    find_query = dict(find_query)
+    fetch_fields = dict(fetch_fields)
     fetch_fields[sort_by_field] = 1
     sort_by = [(sort_by_field, pymongo.ASCENDING)]
     if matching_docs_count is None:
