@@ -74,7 +74,7 @@ def batch_fetch_using_sort(db, collection_name, find_query=None,
              collection_name, matching_docs_count)
     if not matching_docs_count:
         return
-    processed_docs_count = 1
+    processed_docs_count = 0
     progress_text = (r'Processed {0:>%d}/%d documents from %s [{1:6.2f}%%]' %
                      (len(str(matching_docs_count)), matching_docs_count,
                       collection_name))
