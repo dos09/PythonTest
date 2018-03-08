@@ -33,8 +33,10 @@ async def motor_asyncio_find_one(mongo_url, mongo_db):
 
 
 if __name__ == '__main__':
-    fis_config_file = r'/etc/fis/fis-config.json'
-    mongo_url, mongo_db = get_mongo_url_db(fis_config_file)
+#     fis_config_file = r'/etc/fis/fis-config.json'
+#     mongo_url, mongo_db = get_mongo_url_db(fis_config_file)
+    mongo_url = 'mongodb://localhost:27017'
+    mongo_db = 'rimm'
     res = pymongo_find_one(mongo_url, mongo_db)
     print('pymongo find one result: %s' % res)
     event_loop = asyncio.get_event_loop()
