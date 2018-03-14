@@ -16,6 +16,7 @@ async def main():
                     "Content-Type": "application/json", 
                     "name": "Mogka HEADER"},
             ) as response:
+                print('status:', response.status)
                 print(await response.text())
 
 loop = asyncio.get_event_loop()
