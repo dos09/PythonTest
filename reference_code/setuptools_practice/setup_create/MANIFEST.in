@@ -1,0 +1,3 @@
+recursive-include all_horde *.txt *.dat
+include p1/p.txt
+prune all_horde/banned*
