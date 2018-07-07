@@ -16,7 +16,17 @@ ENTRY_POINTS = {
 DEPENDENCIES = (
     'python-dateutil >= 2.7.0',
 )
-
+TESTS_REQUIRE = (
+    'pytest >= 3.5.0',
+)
+EXTRAS_REQUIRE = {
+    'tests' : TESTS_REQUIRE
+}
+CLASSIFIERS = (
+    'Programming Language :: Python :: 3',
+    'Operating System :: OS Independent',
+    'License :: Freely Distributable'
+)
 
 def run():
     setup(
@@ -25,11 +35,30 @@ def run():
         packages=find_packages(),
         include_package_data=True,  # see the MANIFEST.in,
         entry_points=ENTRY_POINTS,
-        install_requires=DEPENDENCIES
+        install_requires=DEPENDENCIES,
+        # tests_require=TESTS_REQUIRE,
+        extras_require=EXTRAS_REQUIRE,
+        classifiers=CLASSIFIERS
     )
 
 if __name__ == '__main__':
     run()
+
+"""
+How to use:
+1. Open terminal and navigate to setuptools_practice
+2. Install the packages
+    2.1. If you want to install the extras:
+    pip install -U setup_create\[tests]
+    2.2. Install without the extras:
+    pip install -U setup_create\
+    
+    -U is for update (in case this is not the first run).
+    Can use -e instead of -U, which stands for "editable", to allow source
+    code changes to be visible without having to pip install again.
+3. Can issue commands from the entry_points or use "all_horde" and "p1" packages
+in other code. 
+"""
 
 """
 Useful setup kwargs:
@@ -104,5 +133,10 @@ a = ['all_horde', 'p1', 'all_horde.horde']
 b = ['all_horde', 'p1', 'all_horde.horde']
 c = ['all_horde', 'p1', 'all_horde.horde']
 d = ['all_horde', 'p1']
+
+-------------------------------------------------------------------------------
+
+about the classifiers
+https://pypi.org/classifiers/
 
 """
