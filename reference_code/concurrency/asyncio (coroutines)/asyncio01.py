@@ -54,10 +54,10 @@ def test_create_tasks():
     future_obj = asyncio.gather(*tasks)
     res = event_loop.run_until_complete(future_obj)
     log('future_obj.result() %s' % future_obj.result())  # same as below
-    log('res from run_until_complete' % res)  # same as above
+    log('res from run_until_complete %s' % res)  # same as above
     event_loop.close()
 
 if __name__ == '__main__':
-    # test_create_tasks()
+    test_create_tasks()
     # test_simple_hello_world()
-    test_simple_hello_world_2()
+    # test_simple_hello_world_2()

@@ -21,5 +21,17 @@ def test02():
     pass_b_only = partial(print_a_b_c, 'aaaaa', c='ccccc')
     pass_b_only('????')
 
+
+
+def test_full():
+    def m(a, b='B', c='C'):
+        print(a,b,c)
+    
+    partial(m, 11, 12, 13)()
+    partial(m, 21)()
+    r = partial(m, 31, b=32)
+    r()
+    r(c=11111)
+
 if __name__ == '__main__':
-    test02()
+    test_full()
