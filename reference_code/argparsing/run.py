@@ -48,6 +48,7 @@ def optional_verbosity():
 def optional_mutually_exclusive():
     parser = argparse.ArgumentParser(
         description='Test mutually exclusive options')
+    # pass required=True to make option from the group required
     group = parser.add_mutually_exclusive_group()
     # when action is store_true the arg has True only if it's passed
     # when action is store_false the arg has False only if it's passed
@@ -60,25 +61,65 @@ def optional_mutually_exclusive():
     ]
     print('\n'.join(lines))
 
-def all_actions():
+
+def parent_parser():
+    # add_help=False to avoid conflict with the -h, --help options of the
+    # parsers
+    clan_parser = argparse.ArgumentParser(add_help=False)
+    clan_parser.add_argument('--clan')
+
+    orc_parser = argparse.ArgumentParser(parents=[clan_parser, ])
+    orc_parser.add_argument('name')
+    args = orc_parser.parse_args()
+    print(args)
+
+
+def sub_commands():
+    def orc(args):
+        print('Orc name: %s' % args.orc_name)
+
+    def troll(args):
+        print('Troll name: %s' % args.troll_name)
+
     parser = argparse.ArgumentParser()
-    # parser.add_argument('-b', '--banana')
+    parser.add_argument('--clan', required=True, help='(required)')
+
+    sub_parsers = parser.add_subparsers(title='sub commands')
+
+    orc_parser = sub_parsers.add_parser('orc', aliases=['o'])
+    orc_parser.add_argument('orc_name')
+    orc_parser.set_defaults(func=orc)
+
+    troll_parser = sub_parsers.add_parser('troll', aliases=['t'])
+    troll_parser.add_argument('troll_name')
+    troll_parser.set_defaults(func=troll)
+
+    print('Using test args for parsing')
+    args = parser.parse_args('--clan Mofos orc Mogka'.split())
+    #args = parser.parse_args()
+    print('args:', args)
+    args.func(args)
+
+def grouping_in_help():
+    parser = argparse.ArgumentParser()
+    
+    group_required = parser.add_argument_group(title='required arguments')
+    group_required.add_argument('fraction')
+    group_required.add_argument('--race', required=True)
+    group_required.add_argument('--name', required=True)
+    
+    parser.add_argument('--clan')
+    
     args = parser.parse_args()
-    print('NOT READY')
+    print(args)
+
+def add_attributes_to_parser():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('a')
+    parser.set_defaults(b='bear')
+    parser.set_defaults(c='crocodile')
+    args = parser.parse_args(['ape'])
+    print(args)
 
 if __name__ == '__main__':
-    all_actions()
-    """
-    TODO: the other actions
-    self.register('action', None, _StoreAction)
-    self.register('action', 'store', _StoreAction)
-    self.register('action', 'store_const', _StoreConstAction)
-    self.register('action', 'store_true', _StoreTrueAction)
-    self.register('action', 'store_false', _StoreFalseAction)
-    self.register('action', 'append', _AppendAction)
-    self.register('action', 'append_const', _AppendConstAction)
-    self.register('action', 'count', _CountAction)
-    self.register('action', 'help', _HelpAction)
-    self.register('action', 'version', _VersionAction)
-    self.register('action', 'parsers', _SubParsersAction)
-    """
+    add_attributes_to_parser()
