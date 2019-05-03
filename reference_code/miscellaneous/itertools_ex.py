@@ -44,7 +44,7 @@ def infinite_interators():
 
 """
 Iterators terminating on the shortest input sequence
-(not all only what seems to be more useful)
+(not all, only what seems to be more useful)
 """
 
 
