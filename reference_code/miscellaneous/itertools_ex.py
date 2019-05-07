@@ -88,20 +88,56 @@ def m_filterfalse():
     r = list(itertools.filterfalse(predicate, iterable))
     print(r)
 
+
 @print_method_name
 def m_zip_longest():
     a = 'abcd'
-    b = [1,2]
-    r = list(itertools.zip_longest(a,b, fillvalue='X'))
+    b = [1, 2]
+    r = list(itertools.zip_longest(a, b, fillvalue='X'))
     print(r)
 
+"""
+Combinatoric iterators
+"""
+
+
+@print_method_name
+def m_product():
+    print(list(itertools.product([1, 2], [4, 5])))
+    print(list(itertools.product([1, 2], repeat=2)))
+    # same as above
+    # print(list(itertools.product([1,2], [1,2])))
+    print(list(itertools.product(range(2), repeat=3)))
+
+
+@print_method_name
+def m_permutations():
+    print(list(itertools.permutations('abc')))
+    print(list(itertools.permutations('abc', r=2)))
+
+
+@print_method_name
+def m_combinations():
+    # r is required parameter
+    print(list(itertools.combinations('abc', r=2)))
+
+
 def run():
-    infinite_interators()
-    m_accumulate()
-    m_chain()
-    m_compress()
-    m_filterfalse()
-    m_zip_longest()
+#     infinite_interators()
+
+    # Iterators terminating on the shortest input sequence (not all)
+    
+#     m_accumulate()
+#     m_chain()
+#     m_compress()
+#     m_filterfalse()
+#     m_zip_longest()
+
+    # Combinatoric iterators
+    
+#     m_product()
+    m_permutations()
+    m_combinations()
 
 
 if __name__ == '__main__':
