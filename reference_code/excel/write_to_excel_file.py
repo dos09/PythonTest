@@ -47,13 +47,11 @@ def run():
 
     work_sheet.title = 'Bananas'
     # below if for adding filters to all columns if the first row is with column names
-    #work_sheet.auto_filter.ref = work_sheet.dimensions
-    
+    # work_sheet.auto_filter.ref = work_sheet.dimensions
+
     work_sheet = work_book.create_sheet('Mangos')
     add_text_cell(work_sheet, 1, 1, 'One mango')
-    
-    
-    
+
     save(work_book, dir_name, file_name)
 
 
