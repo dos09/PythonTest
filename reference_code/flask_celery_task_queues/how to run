@@ -1,0 +1,24 @@
+1. create virtual env:
+	cd ~/envs
+	virtualenv -p python3 banana
+2. activate env:
+	. ~/envs/banana/bin/activate
+3. cd <path to the dir with the setup.py file>
+4. install dependencies:
+	- if going to modify the code (dev install):
+		pip install -e .
+	- if not going to change code:
+		pip install .
+4. cd /path/to/entry_apps
+5. run gunicorn:
+	gunicorn --workers=2 --bind=127.0.0.1:4000 --log-level debug flask_entry:app
+6. open another terminal, activate env, cd /path/to/entry_apps
+7. run one celery worker server for processing the tasks from queue "celery",
+which is the default queue:
+	celery -A celery_entry worker --loglevel=info --hostname alpha%%h
+8. open another terminal, activate env, cd /path/to/entry_apps
+9. run second celery worker server for processing slow tasks:
+	celery -A celery_entry worker --loglevel info --hostname beta%%h -Q hello-q,slow-q
+10. open another terminal and test the API:
+	curl -X POST "http://127.0.0.1:4000/slow"
+	curl -X POST "http://127.0.0.1:4000/fast"
