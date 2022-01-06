@@ -8,7 +8,7 @@ from setuptools import find_packages, setup
 # )
 
 REQUIRES = (
-    'celery==4.4.7',
+    'celery==5.2.2',
     'Flask',
     'gunicorn==20.1.0',
     'redis'
